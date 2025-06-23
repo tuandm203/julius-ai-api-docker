@@ -7,6 +7,9 @@ load_dotenv()
 
 # Get Julius API token from environment
 JULIUS_TOKEN = os.getenv('JULIUS_API_TOKEN')
+JULIUS_MESSAGE = os.getenv('JULIUS_MESSAGE')
+JULIUS_FILE_PATH = os.getenv('JULIUS_FILE_PATH')
+
 if not JULIUS_TOKEN:
     raise ValueError("JULIUS_API_TOKEN not found in environment variables. Please check your .env file.")
 
@@ -14,7 +17,7 @@ if not JULIUS_TOKEN:
 julius = Julius(api_key=JULIUS_TOKEN)
 
 def main():
-    file_paths = ["eval_sets/NBA Stats 202425 All Metrics  NBA Player Props Tool.csv"]
+    file_paths = ["JULIUS_FILE_PATH"]
     
     try:
         # You can still upload files individually if needed
@@ -32,7 +35,7 @@ def main():
                 # {"role": "system", "content": "You are a helpful data scientist analyzing documents."},
                 {
                     "role": "user",
-                    "content": f"Please analyze the file(s) I have shared and give me the 2 columns with highest correlation. Also draw me a bar graph with the top 10 scorers and their PPG.",
+                    "content": f"{JULIUS_MESSAGE}",
                     "file_paths": file_paths,
                     "advanced_reasoning": True
                 }
