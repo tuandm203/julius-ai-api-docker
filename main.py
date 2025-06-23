@@ -17,7 +17,7 @@ if not JULIUS_TOKEN:
 julius = Julius(api_key=JULIUS_TOKEN)
 
 def main():
-    file_paths = ["JULIUS_FILE_PATH"]
+    file_paths = [JULIUS_FILE_PATH]
     
     try:
         # You can still upload files individually if needed
