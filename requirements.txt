@@ -1,0 +1,7 @@
+dotenv
+Pillow
+urllib3
+chardet
+pandas
+requests
+
