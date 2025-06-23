@@ -7,6 +7,7 @@ load_dotenv()
 
 # Get Julius API token from environment
 JULIUS_TOKEN = os.getenv('JULIUS_API_TOKEN')
+
 JULIUS_MESSAGE = os.getenv('JULIUS_MESSAGE')
 JULIUS_FILE_PATH = os.getenv('JULIUS_FILE_PATH')
 
@@ -18,6 +19,7 @@ julius = Julius(api_key=JULIUS_TOKEN)
 
 def main():
     file_paths = [JULIUS_FILE_PATH]
+    message = JULIUS_MESSAGE
     
     try:
         # You can still upload files individually if needed
@@ -35,7 +37,7 @@ def main():
                 # {"role": "system", "content": "You are a helpful data scientist analyzing documents."},
                 {
                     "role": "user",
-                    "content": f"{JULIUS_MESSAGE}",
+                    "content": f"{message}",
                     "file_paths": file_paths,
                     "advanced_reasoning": True
                 }
